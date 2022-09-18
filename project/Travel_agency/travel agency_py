@@ -1,0 +1,153 @@
+import mysql.connector
+x=mysql.connector.connect(
+    host="localhost",
+    password="Eran@183",
+    user="root",
+    database="travel_agency"
+ )
+# mycursor=x.cursor()
+# mycursor.execute("create table info(choice int,place varchar(50),book varchar(50),price int,output varchar(50))")
+print("*********WELCOME TO FUN TRAVEL*******")
+print("1.travel places\n2.package\n3.booking\n4.exit")
+choice=int(input("please select from the above:"))
+mycursor=x.cursor()
+val=[choice]
+sql="insert into info(choice)values(%s)"
+mycursor.execute(sql,val)
+x.commit()
+def travel_places():
+    print("korea\tafrice\tdubai\tooty\tkerala")
+def package():
+    place=str(input("please select the above places to see packages:")).lower().strip()
+    mycursor=x.cursor()
+    val=[place]
+    sql="insert into info(place)values(%s)"
+    mycursor.execute(sql,val)
+    x.commit()
+    if place=="korea":
+        print("1. five days travel amount is 75,000")
+        print("2. 1 week travel  amount is 1,00,000")
+        print("3. 15 days travel amount is 1.25,000")
+    elif place=="africa":
+        print("1. five days travel  amount is 70,000")
+        print("2. 1 week travel amount is 90,000")
+        print("3. 15 days travel  amount is 1,05,000")
+    elif place=="dubai":
+        print("1.five days travel the amount is 50,000")
+        print("2. week travel the amount is 75,000")
+        print("3. 15 days travel the amount is 1,00,000")
+    elif place=="ooty":
+        print("1. five days travel the amount is 35,000")
+        print("2. 1 week travel the amount is 50,000")
+        print("3. 15 days travel the amount is 75,000")
+    elif place=="kerala":
+        print("1.five days travel the amount is 50,000")
+        print("2. 1 week travel the amount is 75,000")
+        print("3. 15 days travel the amount is 85,000")
+def booking(book,price):
+    if book=="korea":
+        print("passport is mandatory")
+        if price==1:
+            print("1.five days travel  amount is 70,000\nyour ticket is booked")
+        elif price==2:
+            print("2. 1 week travel  amount is 1,00,000\nyour ticket is booked")
+        elif price==3:
+            print("3.15 days travel amount is 1,25,000\nyour ticket is booked")
+        else:
+            print("pleae select the available package\nyour ticket is booked")
+    else:
+        ("please select the available palace")
+    if book=="dubai":
+        print("passport is mandatory")
+        if price==1:
+            print("1.five days travel  amount is 50,000\nyour ticket is booked")
+        elif price==2:
+            print("2.1 week travel  amount is 75,000\nyour ticket is booked")
+        elif price==3:
+            print("3. 15 days travel amount is 1,00,000\nyour ticket is booked")
+        else:
+            print("pleae select the available \nyour ticket is booked")
+    else:
+        ("please select the available palace")
+    if book=="africa":
+        print("passport is mandatory")
+        if price==1:
+            print("1. five days travel  amount is 70,000\nyour ticket is booked")
+        elif price==2:
+            print("2. 1 week travel  amount is 90,000\nyour ticket is booked")
+        elif price==3:
+            print("3. 15 days travel amount is 1,055,000\nyour ticket is booked")
+        else:
+            print("pleae select the available package\nyour ticket is booked")
+    else:
+        ("please select the available palace")
+    if book=="ooty":
+        print("passport is  not mandatory")
+        if price==1:
+            print("1.five days travel  amount is 35,000\nyour ticket is booked")
+        elif price==2:
+            print("2. 1 week travel  amount is 50,000\nyour ticket is booked")
+        elif price==3:
+            print("3. 15 days travel amount is 75,000\nyour ticket is booked")
+        else:
+            print("pleae select the available package\nyour ticket is booked")
+    else:
+        ("please select the available palace")
+    if book=="kerala":
+        print("passport is not mandatory")
+        if price==1:
+            print("1.five days travel  amount is 50,000\nyour ticket is booked")
+        elif price==2:
+            print("2.1 week travel  amount is 75,000\nyour ticket is booked")
+        elif price==3:
+            print("3.15 days travel amount is 85,000\nyour ticket is booked")
+        else:
+            print("pleae select the available package\nyour ticket is booked")
+    else:
+        ("please select the available palace")
+def exit(output):
+    if output=='y':
+        print("Thank you for visiting ")
+    else:
+        ("please continue")
+if choice==1:
+    travel_places()
+elif choice==2:
+    travel_places()
+    package()
+elif choice==3:
+    travel_places()
+    package()
+    book=str(input("Please choose your travel place:")).lower().strip()
+    mycursor=x.cursor()
+    val=[book]
+    sql="insert into info(book)values(%s)"
+    mycursor.execute(sql,val)
+    x.commit()
+    price=int(input("please select your package:"))
+    mycursor=x.cursor()
+    val=[price]
+    sql="insert into info(price)values(%s)"
+    mycursor.execute(sql,val)
+    x.commit()
+
+    booking(book,price)
+elif choice==4:
+    output=str(input("do you want to exit(y/n):")).lower().strip()
+    mycursor=x.cursor()
+    val=[output]
+    sql="insert into info(output)values(%s)"
+    mycursor.execute(sql,val)
+    exit(output)
+
+    
+        
+
+
+
+
+
+
+
+    
+
